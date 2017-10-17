@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem "image_processing"
 gem "mini_magick", ">= 4.3.5"
 gem 'simple_form'
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'guard-livereload'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 
@@ -45,6 +47,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'dotenv-rails'
+  gem 'guard-livereload'
+  # gem 'guard-livereload', '~> 2.5', require: false
 end
 
 group :development do

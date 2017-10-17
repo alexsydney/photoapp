@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004045119) do
+ActiveRecord::Schema.define(version: 20171005105510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "message", null: false
+    t.bigint "user_id"
+    t.bigint "photo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_comments_on_photo_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "followers", id: false, force: :cascade do |t|
+    t.bigint "followed_id", null: false
+    t.bigint "follower_id", null: false
+    t.index ["followed_id", "follower_id"], name: "index_followers_on_followed_id_and_follower_id", unique: true
+    t.index ["follower_id", "followed_id"], name: "index_followers_on_follower_id_and_followed_id", unique: true
+  end
+
+  create_table "likes", id: false, force: :cascade do |t|
+    t.bigint "photo_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_id", "user_id"], name: "index_likes_on_photo_id_and_user_id", unique: true
+  end
 
   create_table "photos", force: :cascade do |t|
     t.text "image_data"
@@ -22,6 +47,17 @@ ActiveRecord::Schema.define(version: 20171004045119) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.text "avatar_data"
+    t.string "username"
+    t.bigint "user_id"
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.index ["username"], name: "index_profiles_on_username", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,5 +77,26 @@ ActiveRecord::Schema.define(version: 20171004045119) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.bigint "votable_id"
+    t.string "voter_type"
+    t.bigint "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
+  end
+
+  add_foreign_key "comments", "photos"
+  add_foreign_key "comments", "users"
+  add_foreign_key "followers", "users", column: "followed_id"
+  add_foreign_key "followers", "users", column: "follower_id"
   add_foreign_key "photos", "users"
+  add_foreign_key "profiles", "users"
 end

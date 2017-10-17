@@ -1,0 +1,15 @@
+<% if photo.comments   %>
+    <%  photo.comments.each do |comment| %>
+      <%= comment %>
+      <%= comment.user.email %>
+      <%= comment.message %>
+    <% end  %>
+
+<% end %>
+<% if comment.user == current_user %>
+<%= link_to photo_comment_path(photo, comment), method: :delete, data: { confirm: "Are you sure?"}  %>
+ <%= form_for [photo, photo.comments.new] do |f| %>
+   <%= f.string_field :message, placeholder: 'Add a comment...'
+ <% end %>
+
+<% end %>
