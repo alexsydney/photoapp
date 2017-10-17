@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Avatar:</strong>
+  <%#= @profile.avatar_data %>
+  <img src="<%= @profile.avatar_url %>">
+</p>
+<p>
+  <strong>Username:</strong>
+  <%= @profile.username %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @profile.user %>
+</p>
+<p>
+  <strong>Bio:</strong>
+  <%= @profile.bio %>
+</p>
+<% if !user_signed_in?  %>
+
+<% elsif  @profile.user == current_user %>
+<%= link_to 'Edit', edit_profile_path(@profile) %>
+<% else %>
+<%= form_with(model: @profile.user, method: patch) do |f| %>
+  <%= f.hidden_field :toggle_follow, value: true %>
+  <%= f.button @profile.user.followed_by?(current_user) ? 'Unfollow' : 'Follow', class: 'btn btn-primary btn-block'  %>
+<% end %>
+<% end %>
+<%= link_to 'Back', profile_path %>
+
+<%= render 'shared/photos', photos: @profile_photos %>
+<%#= @profile_photos.inspect %>

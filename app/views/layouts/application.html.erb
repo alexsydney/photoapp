@@ -13,7 +13,9 @@
     <%= render '/layouts/nav' %>
 
     <%= render '/shared/flash' %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-    <%= yield %>
   </body>
 </html>

@@ -1,0 +1,23 @@
+<%= simple_form_for(profile, url: profile_path) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <h4>Change your profile image:</h4>
+    <%#= f.input :avatar_data %>
+
+    <%#= f.input :avatar, as: :hidden, input_html: {value: profile.cached_avatar_data} %>
+    
+    <%= f.input :avatar, as: :file %>
+    <!-- <%#= avatar_data_select(ava) %> -->
+    <%#= f.file_field :avatar_data, onChange: 'loadFile(event)'  %>
+    <%#= f.input :avatar_data %>
+    <%= f.input :username %>
+    <%#= f.association :user %>
+    <%= f.input :bio %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

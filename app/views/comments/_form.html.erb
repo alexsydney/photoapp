@@ -1,0 +1,33 @@
+<%= form_with(model: [@photo, comment], local: true) do |form| %>
+  <% if comment.errors.any?  %>
+  <div id="error_explanation">
+    <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved</h2>
+    <ul>
+      <% comment.errors.full_message.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end  %>
+
+  <div class="field">
+   <%= form.text_area :message, id: :comment_message %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<!-- <%#= simple_form_for(@comment) do |f| %>
+  <%#= f.error_notification %>
+
+  <div class="form-inputs">
+    <%#= f.input :message %>
+    <%#= f.association :user %>
+    <%#= f.association :photo %>
+  </div>
+
+  <div class="form-actions">
+    <%#= f.button :submit %>
+  </div>
+<%# end %> -->

@@ -1,0 +1,21 @@
+<h1>Photos</h1>
+<section>
+    <% photos.each do |photo| %>
+    <article>
+       <%= link_to photo do %>
+         <figure>
+
+           <%#= photo.image_data   %>
+           <%= image_tag photo.image.url, class: 'img-fluid' unless photo.image.nil? %>
+           <!-- <%#= image_tag @photo.image.url, class: 'img-fluid'%> -->
+
+         </figure>
+       <% end %>
+       <p>
+          <strong><%= photo.user.email %></strong>
+                  <%= photo.caption%>
+
+       </p>
+    </article>
+    <% end %>
+</section>

@@ -1,0 +1,12 @@
+<p>
+  <strong><%= comment.user.email %></strong>
+  <%= comment.message %>
+</p>
+
+<% if comment.user == current_user  %>
+<nav>
+  <%=  link_to photo_comment_path(photo, comment) %>
+  <%=  link_to 'Edit', edit_photo_comment_path(photo, comment) %>
+  <%= link_to 'Delete', [photo, comment], method: :delete, data: {confirm: 'Are you sure?'}   %>
+</nav>
+<% end %>
