@@ -13,3 +13,8 @@
   u1.profile
   p1.user
   ```
+
+* Install dependencies
+  ```
+  brew install graphicsmagick
+  ```

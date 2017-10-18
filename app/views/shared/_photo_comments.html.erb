@@ -1,0 +1,16 @@
+<section>
+  <% if locals[:photo_comments].empty? %>
+    No comments exist for this photo
+  <% else %>
+    <% locals[:photo_comments].each do |comment| %>
+      <p>
+        <%= comment.message %>
+        |
+        <%= locals[:photo].commenter_username(comment.user_id) %>
+        |
+        <%= comment.created_at %>
+      </p>
+    <% end %>
+  <% end %>
+</section>
+<br><br>

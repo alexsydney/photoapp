@@ -11,7 +11,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @profile_photos = current_user.photos
+
+    if current_user
+      @profile_photos = current_user.photos
+    end
+
+    redirect_to edit_profile_url if @profile.nil?
 
     # puts @profile.inspect
     # puts @profile.avatar_data
@@ -21,7 +26,7 @@ class ProfilesController < ApplicationController
     # @photos = User.find_by(email: params[:email])
     # only show the user profile if they has
     # @profile = Profile.find_by(user: current_user)
-    redirect_to edit_profile_url if @profile.nil?
+
   end
 
   # GET /profiles/new
@@ -31,7 +36,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-     @profile = Profile,new(user: current_user) if @profile.nil?
+     @profile = Profile.new(user: current_user) if @profile.nil?
 
     # @profile = Profile.find_by(user: current_user)
     # @profile = Profile.find_or_initialize_by(user: current_user)
@@ -100,7 +105,7 @@ class ProfilesController < ApplicationController
         @profile = Profile.find_by(user_id: params[:id])
       else
         # if user signIn with their profile
-        @profile = Profile.find_by!(user: current_user)
+        @profile = Profile.find_by(user: current_user)
       end
     end
 
@@ -111,6 +116,6 @@ class ProfilesController < ApplicationController
 
     def performing_follow?
       params.dig(:user, :toggle_follow).present?
-      # params.require(:user)[:toggle_follow].present?
+
     end
 end

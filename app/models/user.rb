@@ -15,7 +15,29 @@ class User < ApplicationRecord
 
   # has_many :comments, dependent: :destroy
 
-  has_many :followers
+  # has_many :followers
 
-  has_and_belongs_to_many :followers, class_name: 'User'
+  # The people who follow me
+  has_and_belongs_to_many :followers, class_name: 'User', join_table: :followers, foreign_key: :followed_id, association_foreign_key: :follower_id
+
+  # I follow the people
+  has_and_belongs_to_many :following, class_name: 'User', join_table: :followers, foreign_key: :follower_id, association_foreign_key: :followed_id
+
+
+  def followed_by?(user)
+    followers.exists?(user.id)
+  end
+
+
+  def toggle_followed_by(user)
+      if followers.exists?(user.id)
+         followers.destroy(user)
+      else
+        followers << user
+      end
+  end
+
+  scope :top_followed, -> {join(:followers).group(:followed_id).order('count(follower_id) DESC')}
+
+
 end

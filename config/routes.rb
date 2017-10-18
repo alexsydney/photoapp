@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   # root 'home#landing'
   # root 'photos#index'
   root 'profiles#show'
@@ -15,6 +17,16 @@ Rails.application.routes.draw do
   resources :photos do
       resources :comments
   end
+
+  post ':username/follow_user', to: 'relationships#follow_user', as: :follow_user
+
+  get 'relationships/follow_user'
+
+  get 'relationships/unfollow_user'
+
+  post ':username/unfollow_user', to: 'relationships#unfollow_user', as: :unfollow_user
+
+  get 'top/index'
 
   # localhost:3000/:user.email
   # get ':user.email', to: 'profiles#show', as: :profile
