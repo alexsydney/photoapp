@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
 
   # root 'home#landing'
-  # root 'photos#index'
-  root 'profiles#show'
+  root 'photos#index'
+  # root 'profiles#show'
   devise_for :users
 
   resources :users, only: [:show, :update], controller: :profiles

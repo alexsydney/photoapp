@@ -1,21 +1,44 @@
-<h1>Photos</h1>
 <section>
     <% photos.each do |photo| %>
     <article>
        <%= link_to photo do %>
+        <div class="card-deck">
          <figure>
-
+           <div class="card">
+             <%= image_tag photo.image.url, class: 'card-img-top' unless photo.image.nil? %>
+             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+           </div>
            <%#= photo.image_data   %>
-           <%= image_tag photo.image.url, class: 'img-fluid' unless photo.image.nil? %>
+
+           <%#= image_tag photo.image.url, class: 'img-fluid' unless photo.image.nil? %>
+
            <!-- <%#= image_tag @photo.image.url, class: 'img-fluid'%> -->
 
          </figure>
+        </div>
        <% end %>
-       <p>
-          <strong><%= photo.user.email %></strong>
-                  <%= photo.caption%>
+       <!-- <p>
+          <strong><%#= photo.user.email %></strong>
+                  <%#= photo.caption%>
 
-       </p>
+       </p> -->
     </article>
     <% end %>
 </section>
+
+
+<!-- <div class="card-deck">
+
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+  </div>
+
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+  </div>
+
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+  </div>
+
+</div> -->

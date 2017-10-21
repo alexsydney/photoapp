@@ -16,7 +16,6 @@
  @import "bootstrap";
 
  body {
-   background-color: #fafafa;
    font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
  }
 
@@ -153,4 +152,222 @@ line-height: 18px;
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+
+.instagram{
+  background:#ffffff;
+  border: 1px solid #e6e6e6;
+  width:350px;
+  border-radius:3px;
+  margin-bottom:10px;
+  text-align:center;
+  padding:5px;
+}
+
+.inputs{
+  width:270px;
+  margin:auto;
+}
+.inputs input{
+  width: 250px;
+  padding:10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  margin-top:7px;
+  outline:0;
+  color:#262626;
+}
+.inputs input:focus{
+  border:1px solid #aaa;
+}
+.buttons{
+  width:270px;
+  margin:auto;
+}
+.buttons button{
+  width: 100%;
+  outline:0;
+  font-size:14px;
+  margin-top:15px;
+  margin-bottom:60px;
+  padding:10px;
+  font-weight:bold;
+  color:#fff;
+  background:#3897f0;
+  border:none;
+  border-radius:3px;
+}
+.logo {
+  margin:auto;
+  width:270px;
+  text-align:center;
+}
+.logo img{
+  width: 200px;
+  margin-top: 22px;
+}
+
+.line{
+  width: 254px;
+  margin-left: 10%;
+  border-bottom:1px solid #c7c7c7;
+  margin-bottom:15px;
+}
+.kayit{
+  width:270px;
+  margin:auto;
+  text-align:center;
+  color:#262626;
+  font-size:13px;
+  margin-bottom:15px;
+}
+a{
+  text-decoration:none;
+  color:#333;
+}
+.pad{
+  padding:20px 5px;
+}
+.photoapp, .instagram {
+  display: inline-block;
+vertical-align: top;
+}
+
+.btn{
+  margin-bottom: 4%;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-top: 80px;
+  height: 1900px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+@supports (position: sticky) {
+  body {
+    padding-top: 0;
+  }
+
+  header {
+    position: sticky;
+  }
+
+}
+
+.navbar {
+  position: relative;
+  height: 80px;
+  width: 100%;
+  transition: 0.5s ease;
+}
+
+.navbar .nav {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  float: right;
+  margin-right: 5%;
+}
+
+.navbar .nav .item {
+  list-style: none;
+  display: inline-block;
+  font-size: 18px;
+  padding: 5px;
+  font-weight: 300;
+  line-height: 80px;
+  margin-right: 20px;
+  transition: 0.5s ease;
+}
+
+.navbar .nav .item .contact {
+  display: inline-block;
+  background-color: #ffffff;
+  height: 40px;
+  line-height: 30px;
+  padding: 5px;
+  border-radius: 2px;
+  transition: 0.5s ease;
+}
+
+.navbar .nav .item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar .logo {
+  display: inline-block;
+  width: 70px;
+  margin-left: 0;
+}
+
+
+
+.scrolled {
+ transition: 0.5s ease;
+}
+
+.scrolled.navbar {
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: 0.5s ease;
+
+}
+
+
+.scrolled.navbar .nav .item {
+  line-height: 40px;
+  transition: 0.5s ease;
+}
+
+.scrolled.navbar .nav .item .contact {
+  display: inline-block;
+  background-color: #ffffff;
+  height: 40px;
+  line-height: 30px;
+  padding: 5px;
+  border-radius: 2px;
+  transition: 0.5s ease;
+}
+
+.scrolled.navbar .logo {
+  float: left;
+  display: inline-block;
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+  transition: 0.5s ease;
+}
+
+#profile img, #notification img, #explore img {
+  width: 40px;
+}
+
+.logo, .navbar {
+  vertical-align: top;
+  width: 30%;
+  display: inline-block;
+  text-align: left;
+  padding-left: 4%;
+}
+.navbar{
+  width: 60%;
+  text-align: right;
+  padding-top: 0;
+  padding-bottom: 4%;
+}
+header{
+  padding: 2%;
+  background-color: white;
 }
