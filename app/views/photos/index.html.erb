@@ -1,9 +1,9 @@
-<nav class="nav sticky-top justify-content-center pt-2 pb-2 bg-light">
-  <%= link_to 'New Photo', new_photo_path %>
+<!-- <nav class="nav sticky-top justify-content-center pt-2 pb-2 bg-light">
+<%#= link_to 'New Photo', new_photo_path %>
 </nav>
-<p id="notice"><%= notice %>
-  Login as :
- <!-- <%#= @photo.user.email %> -->
+ <p id="notice"><%= notice %>
+
+<%#= @photo.user.email %>
 </p>
-  <%#= render 'photos' %>
-  <%= render 'shared/photos', photos: @photos %>
+  <%#= render 'photos' %> -->
+  <%= render 'shared/photos', photos: @photos, :resize_to_limit => "300x300" %>

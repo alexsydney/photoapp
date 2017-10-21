@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>Avatar:</strong>
+  <!-- <strong>Avatar:</strong> -->
   <%#= @profile.avatar_data %>
   <img src="<%= @profile.avatar_url %>">
 </p>
@@ -9,9 +9,12 @@
   <%= @profile.username %>
 </p>
 <p>
-  <strong>User:</strong>
-  <%= @profile.user %>
+<strong>Full name:</strong>
 </p>
+<!-- <p>
+  <strong>User:</strong>
+  <%#= @profile.user %>
+</p> -->
 <p>
   <strong>Bio:</strong>
   <%= @profile.bio %>
@@ -20,7 +23,7 @@
 
 <% if @profile.user.id == current_user.id %>
 
-  <%= link_to 'Edit', edit_profile_path, class: 'btn edit-button' %>
+  <%= link_to 'Edit Profile', edit_profile_path, class: 'btn edit-button' %>
 
 <% else %>
 
@@ -34,6 +37,10 @@
 <%#= link_to 'Back to Profile', profile_path %>
 
 <br><br>
+<%= link_to "Add New Photo", new_photo_path %> |
+<%#= link_to "Edit Photo", edit_photo_path  %>  |
+<%#= link_to "Delete Photo, "      %>
+
 <% if @profile_photos.present? %>
   <%= render 'shared/photos', photos: @profile_photos %>
 <% else %>
