@@ -9,23 +9,34 @@
   <strong><%= @photo.user.email %></strong>
           <%= @photo.caption %>
 </p>
+<div class="btn ">
+  <%= link_to 'add comment on photo', new_photo_comment_path(@photo), :class => "btn btn-primary btn-xs" %>
+  <% if current_user == @photo.user %>
+  <%= link_to 'Edit', edit_photo_path(@photo), :class => "btn btn-primary btn-xs"%>
+  <%= link_to 'Delete', @photo, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-primary btn-xs"%>
+  <% end %>
+  <%= link_to 'Back to Photos', photos_path, :class => "btn btn-primary btn-xs" %>
+  <%= link_to 'Back to Profile', profile_path, :class => "btn btn-primary btn-xs" %>
+</div>
 
-<h3>Create New Comment:</h3>
 
-<%= link_to 'New Photo Comment', new_photo_comment_path(@photo) %>
-|
-<% if current_user == @photo.user %>
+<%#= link_to 'Show', todo, class: 'btn btn-primary btn-xs' %>
+<%#= link_to 'Edit', edit_todo_path(todo), class: 'btn btn-info btn-xs' %>
+<%#= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+
+
+<%#= link_to 'New Photo Comment', new_photo_comment_path(@photo) %>
+<!-- | -->
+<!-- <% if current_user == @photo.user %> -->
     <!-- <%#= link_to "Cancel", photos_path %> | -->
-    <%= link_to 'Edit', edit_photo_path(@photo) %> |
-    <%= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?'} %>
-<% end %>
-<br><br>
-<%= link_to 'Back to Photos', photos_path %>
-|
-<%= link_to 'Back to Profile', profile_path %>
 
-<br><br>
+    <%#= link_to 'Edit', edit_photo_path(@photo) %>
+    <%#= link_to 'Destroy', @photo, method: :delete, data: { confirm: 'Are you sure?'} %>
+<!-- <% end %> -->
 
-<h3>Existing Comments:</h3>
+<%#= link_to 'Back to Photos', photos_path %>
+<!-- | -->
+<%#= link_to 'Back to Profile', profile_path %>
 
+<p><strong>Comments</strong></p>
 <%= render 'shared/photo_comments', locals: {photo: @photo, photo_comments: @photo_comments } %>

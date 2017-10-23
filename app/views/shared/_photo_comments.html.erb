@@ -6,9 +6,10 @@
       <p>
         <%= comment.message %>
         |
-        <%= locals[:photo].commenter_username(comment.user_id) %>
+       <strong>  <%= locals[:photo].commenter_username(comment.user_id) %></strong>
         |
-        <%= comment.created_at %>
+        <%= comment.created_at.to_formatted_s(:long_ordinal)  %>
+
       </p>
     <% end %>
   <% end %>

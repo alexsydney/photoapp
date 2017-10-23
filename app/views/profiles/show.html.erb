@@ -8,9 +8,7 @@
   <strong>Username:</strong>
   <%= @profile.username %>
 </p>
-<p>
-<strong>Full name:</strong>
-</p>
+
 <!-- <p>
   <strong>User:</strong>
   <%#= @profile.user %>
@@ -23,22 +21,23 @@
 
 <% if @profile.user.id == current_user.id %>
 
-  <%= link_to 'Edit Profile', edit_profile_path, class: 'btn edit-button' %>
+  <%= link_to 'Edit Profile', edit_profile_path, class: 'btn btn-primary btn-xs' %>
+  <%#= link_to 'Edit Profile', profile_path, :class => "btn btn-primary btn-xs" %>
 
 <% else %>
 
   <%= form_with(model: @profile.user, method: patch) do |f| %>
     <%= f.hidden_field :toggle_follow, value: true %>
-    <%= f.button @profile.user.followed_by?(current_user) ? 'Unfollow' : 'Follow', class: 'btn btn-primary btn-block'  %>
+    <%= f.button @profile.user.followed_by?(current_user) ? 'Unfollow' : 'Follow', class: 'btn btn-primary btn-xs'  %>
   <% end %>
 
 <% end %>
 
 <%#= link_to 'Back to Profile', profile_path %>
 
-<br><br>
-<%= link_to "Add New Photo", new_photo_path %> |
-<%#= link_to "Edit Photo", edit_photo_path  %>  |
+<%= link_to "Add New Photo", new_photo_path, class: 'btn btn-primary btn-xs'  %>
+<%#= link_to 'Edit Profile', edit_profile_path, class: 'btn btn-primary btn-xs' %>
+<%#= link_to "Edit Photo", edit_photo_path  %>
 <%#= link_to "Delete Photo, "      %>
 
 <% if @profile_photos.present? %>
